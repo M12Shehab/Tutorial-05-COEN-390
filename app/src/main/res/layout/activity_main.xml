@@ -8,6 +8,9 @@
     tools:context=".Views.MainActivity">
 
     <androidx.appcompat.widget.SearchView
+        android:elevation="3dp"
+        android:background="#AAA"
+        android:layout_margin="10dp"
         android:id="@+id/txt_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
