@@ -1,6 +1,9 @@
 package com.my_course_coen_390.tutorial05.Views;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Toast;
 
 import com.my_course_coen_390.tutorial05.Controllers.PokemonViewAdapter;
 import com.my_course_coen_390.tutorial05.Models.Pokemon;
@@ -9,11 +12,15 @@ import com.my_course_coen_390.tutorial05.R;
 import java.util.ArrayList;
 import java.util.Random;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MainActivity extends AbsRuntimePermission implements SearchView.OnQueryTextListener {
+public class MainActivity extends AbsRuntimePermission
+        implements SearchView.OnQueryTextListener
+{
 
     RecyclerView rc;
     ArrayList<Pokemon> Pokemons;
@@ -32,6 +39,7 @@ public class MainActivity extends AbsRuntimePermission implements SearchView.OnQ
         adapter = new PokemonViewAdapter(Pokemons, this);
         rc.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rc.setAdapter(adapter);
+        new ItemTouchHelper(card_touch_helper).attachToRecyclerView(rc);
     }
 
     private ArrayList<Pokemon> generate_dummy() {
@@ -104,5 +112,29 @@ public class MainActivity extends AbsRuntimePermission implements SearchView.OnQ
         return true;
     }
 
+    // This function is to swap and delete
+    ItemTouchHelper.SimpleCallback card_touch_helper = new ItemTouchHelper.SimpleCallback(0,
+            ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            if(direction == ItemTouchHelper.RIGHT) {
+                Pokemons.remove(viewHolder.getAdapterPosition());
+//                adapter.notifyDataSetChanged();
+            }
+            else
+            {
+                Pokemon p = Pokemons.get(viewHolder.getAdapterPosition());
+                Toast.makeText(getBaseContext(),
+                        "You Left swap pokemon " +p.getName(),
+                        Toast.LENGTH_SHORT).show();
+            }
+            adapter.notifyDataSetChanged();
+        }
+    };
 
 }
