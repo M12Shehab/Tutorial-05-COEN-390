@@ -8,7 +8,7 @@
   <p align="center">
    In this class, you will see how to implement Recyclerview with a custom card view. 
     Also, we will cash the image to save mobile SD memory by using 
-<a href="https://square.github.io/picasso/"> Picasso's </a> library.
+<a href="https://square.github.io/picasso/" target="_blank"> Picasso's </a> library.
   </p>
 </p>
 
