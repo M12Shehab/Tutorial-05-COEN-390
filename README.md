@@ -1,3 +1,4 @@
+<html lang="en">
 <p align="center">
   <a href="https://github.com/M12Shehab/Tutorial-05-COEN-390">
     <img src="powered-by-android.svg" alt="Logo" width="180" height="180">
@@ -8,7 +9,7 @@
   <p align="center">
    In this class, you will see how to implement Recyclerview with a custom card view. 
     Also, we will cash the image to save mobile SD memory by using 
-<a href="https://square.github.io/picasso/" target="_blank" rel="noopener noreferrer"> Picasso's </a> library.
+<a href="https://square.github.io/picasso/" target="_blank"> Picasso's </a> library.
   </p>
 </p>
-
+</html>
