@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <p align="center">
   <a href="https://github.com/M12Shehab/Tutorial-05-COEN-390">
